@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_064937) do
+ActiveRecord::Schema.define(version: 2019_07_31_090632) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_064937) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_name"
+    t.string "password"
   end
 
 end

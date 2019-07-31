@@ -11,11 +11,13 @@ Rails.application.routes.draw do
   post "posts/:id/destroy" => "posts#destroy"
 
   # users
+  get "login_form" => "users#login_form"
   get 'users/index' => "users#index"
   get "users/new" => "users#new"
   get "users/:id/edit" => "users#edit"
   get 'users/:id' => "users#show"
   post "users/create" => "users#create"
+  post "login" => "users#login"
   patch "users/:id/update" => "users#update"
 
 
