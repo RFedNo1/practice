@@ -1,0 +1,6 @@
+<div class="card" style="border: 1px solid black;">
+    <p><%= @post.content %></p>
+    <%= link_to '編集', "/posts/#{@post.id}/edit" %>
+    <%= link_to '削除', "/posts/#{@post.id}/destroy", method: "post" %>
+    <small><%= @post.created_at %></small>
+</div>

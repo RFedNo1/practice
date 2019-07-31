@@ -1,0 +1,9 @@
+<%= form_with model: @user, url: "/users/#{@user.id}/update", local: true do |form| %>
+    <% @user.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+    <% end %>
+    <%= form.text_field :name %>
+    <%= form.email_field :email %>
+    <%= form.file_field :image %>
+    <%= form.submit %>
+<% end %>

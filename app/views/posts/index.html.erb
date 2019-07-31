@@ -1,0 +1,6 @@
+<% @posts.each_with_index do |post, i| %>
+    <div class="card" style="border: 1px solid black">
+        <h3>投稿 <%= i+1 %></h3>
+        <p><%= link_to post.content, "/posts/#{post.id}" %></p>
+    </div>
+<% end %>

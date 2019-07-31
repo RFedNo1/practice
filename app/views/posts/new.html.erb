@@ -1,0 +1,7 @@
+<%= form_with model: @post, url: "/posts/create", local: true do |form| %>
+    <% @post.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+    <% end %>
+  <%= form.text_field :content %>
+  <%= form.submit %>
+<% end %>
