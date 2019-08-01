@@ -2,7 +2,12 @@
     <%= @error_message %>
 <% end %>
 <%= form_with model: @user, url: "/login", local: true do |form| %>
-    <%= form.email_field :email %>
-    <%= form.password_field :password %>
+    <div>
+        <%= form.label :email, "メールアドレス" %>
+        <%= form.email_field :email %>
+    </div>
+        <%= form.label :password, "パスワード" %>
+        <%= form.password_field :password %>
+    <div>
     <%= form.submit %>
 <% end %>

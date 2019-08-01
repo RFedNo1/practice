@@ -2,8 +2,17 @@
     <% @user.errors.full_messages.each do |message| %>
         <p><%= message %></p>
     <% end %>
-    <%= form.text_field :name %>
-    <%= form.email_field :email %>
-    <%= form.file_field :image %>
+    <div>
+        <%= form.label :name, "名前" %>
+        <%= form.text_field :name %>
+    </div>
+    <div>
+        <%= form.label :email, "メールアドレス" %>
+        <%= form.email_field :email %>
+    </div>
+        <%= form.label :image, "プロフィール画像" %>
+        <%= form.file_field :image %>
+    <div>
     <%= form.submit %>
+    </div>
 <% end %>

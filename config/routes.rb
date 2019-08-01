@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'users/:id' => "users#show"
   post "users/create" => "users#create"
   post "login" => "users#login"
+  post "logout" => "users#logout"
   patch "users/:id/update" => "users#update"
 
 

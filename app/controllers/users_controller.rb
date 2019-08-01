@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+    before_action :logined_user?, only: [:edit, :update]
+    before_action :forbid_login_user, only: [:new, :create, :login_form, :login]
+
     def index
         @users = User.all
     end
@@ -19,6 +23,7 @@ class UsersController < ApplicationController
             password: params[:user][:password]
         )
         if @user.save
+            session[:user_id] = @user.id
             flash[:notice] = "ユーザを登録しました"
             redirect_to("/users/index")
         else
@@ -60,5 +65,11 @@ class UsersController < ApplicationController
             @error_message = "メールアドレス、もしくはパスワードが間違っています"
             render("users/login_form")
         end
+    end
+
+    def logout
+        session[:user_id] = nil
+        flash[:notice] = "ログアウトしました！"
+        redirect_to("/login_form")
     end
 end
