@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post "logout" => "users#logout"
   patch "users/:id/update" => "users#update"
 
+  # likes
+  post "likes/:post_id/create" => "likes#create"
+  post "likes/:post_id/destroy" => "likes#destroy"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

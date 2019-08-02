@@ -1,4 +1,16 @@
 <img src="/user_images/<%= @user.image_name %>" alt="" srcset="">
 <h2><%= @user.name %></h2>
 <p><%= @user.email %></p>
-<%= link_to '編集', "/users/#{@user.id}/edit" %>
+<% if @current_user && @current_user.id == @user.id %>
+    <%= link_to '編集', "/users/#{@user.id}/edit" %>
+<% end %>
+
+<% @user.posts.each_with_index do |post, i| %>
+    <div class="card" style="border: 1px solid black">
+        <h3>投稿 <%= i+1 %></h3>
+        <img src="/user_images/<%= post.user.image_name %>" width="70px" height="auto">
+        <%= post.user.name %>
+        <p><%= link_to post.content, "/posts/#{post.id}" %></p>
+        <small><%= post.created_at %></small>
+    </div>
+<% end %>

@@ -1,6 +1,21 @@
 <% @posts.each_with_index do |post, i| %>
+    <% likes_count = Like.where(post_id: post.id).count %>
     <div class="card" style="border: 1px solid black">
         <h3>投稿 <%= i+1 %></h3>
+        <%= link_to "/users/#{post.user_id}" do %>
+            <img src="/user_images/<%= post.user.image_name %>" width="70px" height="auto">
+            <%= post.user.name %>
+        <% end %>
         <p><%= link_to post.content, "/posts/#{post.id}" %></p>
+        <% if @current_user && Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+            <%= link_to "/likes/#{post.id}/destroy", method: "post" do %>
+                <i class="fas fa-heart"></i>
+            <% end %>
+        <% else %>
+            <%= link_to "/likes/#{post.id}/create", method: "post" do %>
+                <i class="far fa-heart"></i>
+            <% end %>
+        <% end %>
+        <%= likes_count %>
     </div>
 <% end %>

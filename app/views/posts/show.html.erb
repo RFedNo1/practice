@@ -1,6 +1,18 @@
 <div class="card" style="border: 1px solid black;">
     <p><%= @post.content %></p>
-    <%= link_to '編集', "/posts/#{@post.id}/edit" %>
-    <%= link_to '削除', "/posts/#{@post.id}/destroy", method: "post" %>
+    <% if @current_user && Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+        <%= link_to "/likes/#{@post.id}/destroy", method: "post" do %>
+            <i class="fas fa-heart"></i>
+        <% end %>
+    <% else %>
+        <%= link_to "/likes/#{@post.id}/create", method: "post" do %>
+            <i class="far fa-heart"></i>
+        <% end %>
+    <% end %>
+    <%= @likes_count %>
+    <% if @current_user && @post.user_id == @current_user.id %>
+        <%= link_to '編集', "/posts/#{@post.id}/edit" %>
+        <%= link_to '削除', "/posts/#{@post.id}/destroy", method: "post" %>
+    <% end %>
     <small><%= @post.created_at %></small>
 </div>
